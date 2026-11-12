@@ -1,16 +1,15 @@
+root = true
 
-.env
-.env.*
-!.env.example
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
 
-.git
-.gitignore
-.github
+[*.md]
+trim_trailing_whitespace = false
 
-/vendor
-/node_modules
-
-/storage/logs/*
-/storage/framework/cache/*
-/storage/framework/sessions/*
-/storage/framework/views/*
+[*.{yml,yaml}]
+indent_size = 2
