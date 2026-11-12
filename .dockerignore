@@ -7,7 +7,7 @@ RUN npm run build
 
 FROM dunglas/frankenphp:php8.3
 
-RUN install-php-extensions pdo_mysql pdo_pgsql intl zip gd bcmath opcache pcntl
+RUN install-php-extensions pdo_mysql intl zip gd bcmath opcache pcntl
 
 WORKDIR /app
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -15,7 +15,7 @@ COPY . .
 COPY --from=assets /app/public/build ./public/build
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction \
-    && mkdir -p storage/framework/{cache,sessions,views} storage/logs bootstrap/cache \
+    && mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
 ENV SERVER_NAME=":8080"
